@@ -1,3 +1,4 @@
+from django.http import HttpResponseBadRequest
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib import messages
@@ -115,7 +116,7 @@ def c1(request):
     if admins.exists():
         manger = 1
 
-    data = {'courses': courses, 'users': users, 'usercourses': usercourses, 'manger': manger }
+    data = {'courses': courses, 'users': users, 'usercourses': usercourses, 'manger': manger}
     return render(request, 'course.html', data)
 
 
@@ -203,8 +204,9 @@ def userdata(request, user_id):
     if check == 0:
         redirect('/')
 
-    user_course = UserCourse.objects.filter(user=user_id)
+    courses = Course.objects.all()
 
+    user_course = UserCourse.objects.filter(user=user_id)
     user_course = list(enumerate(user_course))
     users = []
 
@@ -221,10 +223,13 @@ def userdata(request, user_id):
     if admins.exists():
         manger = 1
 
-    data = {'user_course': users, 'employee': employee, 'manger': manger}
+    user_core = UserCourse.objects.filter(user=user_id).select_related('course')
+    user_course_ids = user_core.values_list('course_id', flat=True)
+    data = {'user_course': users, 'employee': employee, 'manger': manger, 'courses': courses, 'user_course_ids': user_course_ids}
     # Optionally, send a success message
-    messages.success(request, 'Course marked as done successfully!')
+    #messages.success(request, 'Course marked as done successfully!')
     return render(request, 'userdata.html', data)
+
 
 def course_detail(request, id):
     coursedata = get_object_or_404(Course, id=id)
@@ -240,6 +245,7 @@ def course_detail(request, id):
     }
     return render(request, 'coursebase.html', context)
 
+
 @login_required
 def course_search(request):
     query = request.GET.get('course_name')
@@ -253,11 +259,38 @@ def course_search(request):
     admins = Admin.objects.filter(user=request.user)
     if admins.exists():
         manager = 1
-    
+
     return render(request, 'coursebase.html', {'course': course_title, 'manager': manager})
+
 
 def done(request, id):
     user_course = UserCourse.objects.get(user=request.user, course__id=id)
     user_course.done = True
     user_course.save()
     return redirect('/')
+
+
+def course_table(request):
+    courses = Course.objects.all()  # Fetch all courses
+    return render(request, 'course_table.html', {'courses': courses})
+
+
+def save_user_courses(request, id):
+    if request.method == 'POST':
+        selected_courses = request.POST.getlist('courseSelect')
+        user_courses = UserCourse.objects.filter(user=id)
+
+        existing_course_ids = set(user_courses.values_list('course_id', flat=True))
+        print(existing_course_ids)
+        curent_user = User.objects.get(id=id)
+        for course_id in selected_courses:
+            if int(course_id) not in existing_course_ids:
+                curent_course = Course.objects.get(id=course_id)
+                UserCourse.objects.create(user=curent_user, course=curent_course)
+
+        for user_course in user_courses:
+            if str(user_course.course.id) not in selected_courses:
+                user_course.delete()
+
+        return redirect('index')
+    return HttpResponseBadRequest("Invalid request")
