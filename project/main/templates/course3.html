@@ -1,0 +1,292 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pro</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{% static 'css/course.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="#"><span ><i class="bi bi-slack"></i>COU</span>RSES
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'userhome' %}" style="padding-right: 56px">الصفحة الرئيسية</a>
+              </li>
+            <!--
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Sections</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Services</a>
+              </li>
+              -->
+              <li class="nav-item">
+                  {% if user.is_authenticated %}
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            background-color: #f9f9f9;
+                            padding: 20px;
+                        }
+
+                        /* Profile button */
+                        .profile-button {
+                            background-color: #4CAF50; /* Green */
+                            color: white;
+                            padding: 10px 20px;
+                            border: none;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            position: relative;
+                        }
+
+                        /* Dropdown menu */
+                        .dropdown-menu {
+                            display: none; /* Hidden by default */
+                            position: absolute;
+                            background-color: white;
+                            min-width: 160px;
+                            border: 1px solid #ccc;
+                            border-radius: 4px;
+                            z-index: 1;
+                        }
+
+                        /* Dropdown items */
+                        .dropdown-item {
+                            padding: 10px;
+                            color: black;
+                            text-decoration: none;
+                            display: block;
+                        }
+
+                        /* Hover effect for dropdown items */
+                        .dropdown-item:hover {
+                            background-color: #f1f1f1;
+                        }
+                    </style>
+                </head>
+                <body>
+
+                <!-- Profile Button -->
+                <a class="nav-link">  <button class="profile-button" onclick="toggleDropdown()">{{ user.username }}</button></a>
+                <div class="dropdown-menu" id="dropdownMenu">
+                        {% if manger %}
+                            <a class="dropdown-item" href="{% url 'index' %}">Manager</a>
+                        {% endif %}
+                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                    </div>
+
+                <script>
+                    function toggleDropdown() {
+                        const dropdownMenu = document.getElementById("dropdownMenu");
+                        dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+                    }
+
+                    // Close the dropdown if the user clicks outside of it
+                    window.onclick = function(event) {
+                        if (!event.target.matches('.profile-button')) {
+                            const dropdowns = document.getElementsByClassName("dropdown-menu");
+                            for (let i = 0; i < dropdowns.length; i++) {
+                                const openDropdown = dropdowns[i];
+                                if (openDropdown.style.display === "block") {
+                                    openDropdown.style.display = "none";
+                                }
+                            }
+                        }
+                    }
+                </script>
+                  {% else %}
+                      <a class="nav-link" href="{% url 'login' %}"><button type="button">Login</button></a>
+                  {% endif %}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <br><br><br>
+      <!-- ********************************************** -->
+    <!--
+      <div class=" container d-flex justify-content-around">
+        <div id="id_manger" class="fs-1 fw-bold p-2 bd-highlight">Id : <span>{{ user.id }}</span></div>
+        <div class=" fs-1 fw-bold p-2 bd-highlight text-capitalize">{{ user.username }}</div>
+        {% if manger == 0 %}
+            <div class=" fs-1 fw-bold p-2 bd-highlight text-capitalize">Employee</div>
+          {% else %}
+            <div class=" fs-1 fw-bold p-2 bd-highlight text-capitalize">Manger</div>
+          {% endif %}
+      </div>
+      -->
+
+      <div class="container">
+      <p id="employee" class="container text-capitalize fs-1 fw-bold text-center">سلامة الغذاء وكيفية التعامل مع المخاطر</p>
+      </div>
+      <br>
+      <div id="mmm" class="container">
+        <div class="container col-md-8 mb-4">
+      <p class=" text-capitalize fs-5 fw-bold" dir="rtl">أهلاً وسهلاً بكم في هذا الشرح الخاص بسلامة الغذاء وكيفية التعامل مع المخاطر اليومية لضمان جودة المنتجات وسلامة المستهلكين.</p>
+      </div>
+      <div class="container col-md-8 ">
+          <iframe class="col-md-12 mb-4" width="500" height="315" src="https://www.youtube.com/embed/rE1QwI5MNh8?si=2mU53xPdJActDup7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="container col-md-8 mb-4" dir="rtl">
+        <p class="text-capitalize fs-5 fw-bold">
+            الجزء الأول: التعامل مع تسريب تلاجة الآيس كريم:
+            "أولاً، إذا لوحظ أي تسريب داخل تلاجة الآيس كريم، يجب التعامل معه بشكل فوري. التسريب قد يؤدي إلى فساد المنتجات أو تلوثها. لهذا، يجب مسح التلاجة بشكل دوري لحين إجراء الصيانة اللازمة. تأكد من نظافة التلاجة بانتظام لضمان سلامة المنتجات."
+            <br><br>
+            الجزء الثاني: التحقق من حالة المانجا:
+            "عند بداية كل نوبة عمل (الشيفت)، من الضروري فحص المانجا للتأكد من جودتها ووجود الكميات اللازمة. في حالة وجود نقص في المانجا، يجب إرسال طلب للحصول على الكمية المطلوبة في أسرع وقت. هذا يساعد في توفير المخزون اللازم وضمان استمرار الخدمة بدون تأخير."
+            <br><br>
+            الجزء الثالث: التعامل مع جهاز الكريب:
+            "أخيراً، عند استخدام جهاز الكريب، يجب التأكد من ضبط درجة الحرارة الصحيحة. التشغيل في درجة حرارة غير مناسبة قد يتسبب في حدوث لسعات حرارية، لذلك يجب توخي الحذر عند التعامل مع الجهاز. تأكد دائماً من اتباع إرشادات التشغيل والسلامة لتجنب أي إصابات."
+        </p>
+    </div>
+
+
+          {% if not manger %}
+        <div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="btn-group" role="group" aria-label="Third group">
+                <a href="{% url 'done3' %}">
+                    <button type="button" class="btn border">Done</button>
+                </a>
+            </div>
+        </div>
+
+        </div>
+          {% endif %}
+
+      </div>
+
+
+
+     <!-- *************************** -->
+
+       <!-- <div class="container">
+        <div  class=" row align-items-center border">
+          <div  class=" fs-3 fw-bold col text-center ">
+            265
+          </div>
+          <div class="fs-3 fw-bold col text-center ">
+            Ahmed Mohamed
+          </div>
+          <div  class="fs-3 fw-bold col text-center ">
+            <div class="btn-group" role="group" aria-label="Third group">
+              <button type="button" class="btn ">Done</button>
+            </div>
+          </div>
+        </div>
+       </div> -->
+<br><br>
+
+
+
+  <!-- ************************** -->
+  <footer class="bg-light text-dark py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <h5 fs-1 fw-bold >Our Links</h5>
+                <p fs-3>Follow us from those links</p>
+                <div id="icon_text">
+                    <a href="https://www.facebook.com/b.labaneg" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-facebook text-dark"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/b.laban/" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-linkedin text-dark"></i>
+                    </a>
+                    <a href="https://www.instagram.com/b.laban.eg" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-instagram text-dark"></i>
+                    </a>
+                </div>
+            </div>
+
+            {% if user.is_authenticated %}
+                <div class="col-md-3 mb-4">
+                <h5>Useful Links</h5>
+                <ul class="list-unstyled">
+                    <li><a id="mmmm" href="https://drive.google.com/file/d/19gtGbQbDAcXul0tYPWk5EuKZf9J_WftB/view?usp=sharing" class="text-dark" target="_blank">سلامة الغذاء</a></li>
+                    <li><a id="mmmm" href="https://drive.google.com/file/d/1Ocv_NuwQCppUEcKNjBN5ySFj5FmfkL2X/view?usp=sharing" class="text-dark" target="_blank">خدمة العملاء</a></li>
+                    <li><a id="mmmm" href="https://drive.google.com/file/d/1BKFSXcVaFQbccqcmCO6pmYmOfEKAG6U7/view?usp=sharing" class="text-dark" target="_blank">سلامة الغذاء(2)</a></li>
+                    <li><a id="mmmm" href="https://drive.google.com/file/d/14MwaEnJ4HqnqDmysX_2Ch83xWdQ1mHqX/view?usp=sharing" class="text-dark" target="_blank">تحليل المخاطر</a></li>
+                    <!--
+                    <li><a href="#" class="text-dark">About us</a></li>
+                    <li><a href="#" class="text-dark">Sections</a></li>
+                    <li><a href="#" class="text-dark">Terms of service</a></li>
+                    -->
+                </ul>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h5 style="padding-bottom: 5px">Documents</h5>
+                <ul class="list-unstyled">
+                    <!--
+                    <li><a href="#" class="text-dark">Mohamed</a></li>
+                    <li><a href="#" class="text-dark">Adel</a></li>
+                    <li><a href="#" class="text-dark">El-Sayed</a></li>
+                    <li><a href="#" class="text-dark">Hassan</a></li>
+                    <li><p>Website Development</p></li>
+                    <li><p>Mobile Apps Development</p></li>
+                    <li><p>Database Management</p></li>
+                    -->
+                    <li><a id="mmmm" href="https://docs.google.com/spreadsheets/d/1E6a4dDwGH6n4jWuDGyc7lRpZJDJuPJhl/edit?usp=sharing&ouid=114904246540518296467&rtpof=true&sd=true" class="text-dark" target="_blank">ملف تدريب الموظفين</a></li>
+
+                </ul>
+            </div>
+            {% else %}
+                <div class="col-md-3 mb-4">
+                <h5>Useful Links</h5>
+                <ul class="list-unstyled">
+                    <li><a id="mmmm" href="{% url 'userhome' %}" class="text-dark">Home</a></li>
+                    <!--
+                    <li><a href="#" class="text-dark">About us</a></li>
+                    <li><a href="#" class="text-dark">Sections</a></li>
+                    <li><a href="#" class="text-dark">Terms of service</a></li>
+                    -->
+                </ul>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h5 style="padding-bottom: 5px">Our Services</h5>
+                <ul class="list-unstyled">
+                    <!--
+                    <li><a href="#" class="text-dark">Mohamed</a></li>
+                    <li><a href="#" class="text-dark">Adel</a></li>
+                    <li><a href="#" class="text-dark">El-Sayed</a></li>
+                    <li><a href="#" class="text-dark">Hassan</a></li>
+                    -->
+                    <li><p>Website Development</p></li>
+                    <li><p>Mobile Apps Development</p></li>
+                    <li><p>Database Management</p></li>
+
+                </ul>
+            </div>
+            {% endif %}
+            <div class="col-md-3 mb-4">
+                <h5>Contact Us</h5>
+                <!--
+                <p>Mohamed Ail Street<br>Dekernes_Dakahlia</p>
+                <p><strong>Phone:</strong> 01096398096</p>
+                <p><strong>Email:</strong> info@example.com</p>
+                -->
+                <p><strong>Phone:</strong> 01275080330</p>
+            </div>
+        </div>
+    </div>
+  </footer>
+
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>
