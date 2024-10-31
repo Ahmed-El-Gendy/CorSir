@@ -271,7 +271,7 @@ def done(request, id):
 
 
 def course_table(request):
-    courses = Course.objects.all()  # Fetch all courses
+    courses = Course.objects.all()
     return render(request, 'course_table.html', {'courses': courses})
 
 
