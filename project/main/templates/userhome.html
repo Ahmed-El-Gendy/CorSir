@@ -270,109 +270,6 @@
           </div>
       </section>
     <!-- ************************************ -->
-    {% if user.is_authenticated %}
-  <section id="Courses" class="services_team section-padding bg position-relative">
-    <p class="fs-1 fw-bold text-center">Courses</p>
-
-    <div class="position-relative">
-      <button class="left btn btn-primary position-absolute" onclick="leftScroll()" style="left: 20px; top: 50%; transform: translateY(-50%); z-index: 10;">
-        <i class="fas fa-angle-double-left"></i>
-      </button>
-      <div class="scroll-images row row-cols-1 row-cols-md-3 g-4 mx-2" style="overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;">
-        {% for usercourse in usercourses %}
-          <div class="col">
-            <div class="card h-100 border-0 shadow-sm" style="transition: transform 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)';" onmouseout="this.style.transform='scale(1)';">
-              <div class="card-img-wrapper" style="width: 100%; height: 70%; overflow: hidden;">
-                <img id="img_team" src="{{ usercourse.course_image }}" 
-                     class="card-img-top" 
-                     alt="{{ usercourse.course_title }} image"
-                     style="width: 100%; height: 100%; object-fit: cover;">
-              </div>
-
-              <!-- Course Title and Link -->
-              <div class="card-body text-center">
-                <h5 class="card-title fs-3 fw-bold">{{ usercourse.course_title }}</h5>
-                <a href="{% url 'course_detail' usercourse.id %}" class="btn btn-outline-primary rounded-circle">
-                  Show
-                </a>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-
-      <!-- Right Scroll Button - Position within the Courses section -->
-      <button class="right btn btn-primary position-absolute" onclick="rightScroll()" style="right: 20px; top: 50%; transform: translateY(-50%); z-index: 10;">
-        <i class="fas fa-angle-double-right"></i>
-      </button>
-    </div>
-  </section>
-
-  <style>
-    .scroll-images::-webkit-scrollbar {
-      display: none;
-    }
-    .scroll-images {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-  </style>
-{% endif %}
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const scrollImages = document.querySelector(".scroll-images");
-      const leftButton = document.querySelector(".left");
-      const rightButton = document.querySelector(".right");
-
-      // Function to check if buttons should be enabled or disabled
-      function checkScroll() {
-        const currentScroll = scrollImages.scrollLeft;
-        const scrollLength = scrollImages.scrollWidth - scrollImages.clientWidth;
-        if (currentScroll === 0) {
-          leftButton.setAttribute("disabled", "true");
-          rightButton.removeAttribute("disabled");
-        } else if (currentScroll >= scrollLength) {
-          rightButton.setAttribute("disabled", "true");
-          leftButton.removeAttribute("disabled");
-        } else {
-          leftButton.removeAttribute("disabled");
-          rightButton.removeAttribute("disabled");
-        }
-      }
-
-      // Calculate the width of three cards to scroll by that amount
-      function getCardWidth() {
-        const card = scrollImages.querySelector('.col'); // Select a single card
-        return card ? card.offsetWidth : 200; // Fallback to 200px if no cards are available
-      }
-
-      // Scroll left by three cards
-      function leftScroll() {
-        scrollImages.scrollBy({
-          left: -3 * getCardWidth(), // Scroll by three cards width
-          behavior: "smooth"
-        });
-      }
-
-      // Scroll right by three cards
-      function rightScroll() {
-        scrollImages.scrollBy({
-          left: 3 * getCardWidth(), // Scroll by three cards width
-          behavior: "smooth"
-        });
-      }
-
-      // Attach scroll event and resize event listeners
-      scrollImages.addEventListener("scroll", checkScroll);
-      window.addEventListener("resize", checkScroll);
-      checkScroll();
-
-      // Attach click events to buttons
-      leftButton.addEventListener("click", leftScroll);
-      rightButton.addEventListener("click", rightScroll);
-    });
-  </script>
   <!-- ************************************** -->
   <div id="text2" class="text-center my-5 container">
     <div class="row justify-content-center">
@@ -386,6 +283,109 @@
         </div>
     </div>
 </div>
+{% if user.is_authenticated %}
+<section id="Courses" class="services_team section-padding bg position-relative">
+  <p class="fs-1 fw-bold text-center">Courses</p>
+
+  <div class="position-relative">
+    <button class="left btn btn-primary position-absolute" onclick="leftScroll()" style="left: 20px; top: 50%; transform: translateY(-50%); z-index: 10;">
+      <i class="fas fa-angle-double-left"></i>
+    </button>
+    <div class="scroll-images row row-cols-1 row-cols-md-3 g-4 mx-2" style="overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;">
+      {% for usercourse in usercourses %}
+        <div class="col">
+          <div class="card h-100 border-0 shadow-sm" style="transition: transform 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)';" onmouseout="this.style.transform='scale(1)';">
+            <div class="card-img-wrapper" style="width: 100%; height: 70%; overflow: hidden;">
+              <img id="img_team" src="{{ usercourse.course_image }}" 
+                   class="card-img-top" 
+                   alt="{{ usercourse.course_title }} image"
+                   style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+
+            <!-- Course Title and Link -->
+            <div class="card-body text-center">
+              <h5 class="card-title fs-3 fw-bold">{{ usercourse.course_title }}</h5>
+              <a href="{% url 'course_detail' usercourse.id %}" class="btn btn-outline-primary rounded-circle">
+                Show
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Right Scroll Button - Position within the Courses section -->
+    <button class="right btn btn-primary position-absolute" onclick="rightScroll()" style="right: 20px; top: 50%; transform: translateY(-50%); z-index: 10;">
+      <i class="fas fa-angle-double-right"></i>
+    </button>
+  </div>
+</section>
+
+<style>
+  .scroll-images::-webkit-scrollbar {
+    display: none;
+  }
+  .scroll-images {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+{% endif %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const scrollImages = document.querySelector(".scroll-images");
+    const leftButton = document.querySelector(".left");
+    const rightButton = document.querySelector(".right");
+
+    // Function to check if buttons should be enabled or disabled
+    function checkScroll() {
+      const currentScroll = scrollImages.scrollLeft;
+      const scrollLength = scrollImages.scrollWidth - scrollImages.clientWidth;
+      if (currentScroll === 0) {
+        leftButton.setAttribute("disabled", "true");
+        rightButton.removeAttribute("disabled");
+      } else if (currentScroll >= scrollLength) {
+        rightButton.setAttribute("disabled", "true");
+        leftButton.removeAttribute("disabled");
+      } else {
+        leftButton.removeAttribute("disabled");
+        rightButton.removeAttribute("disabled");
+      }
+    }
+
+    // Calculate the width of three cards to scroll by that amount
+    function getCardWidth() {
+      const card = scrollImages.querySelector('.col'); // Select a single card
+      return card ? card.offsetWidth : 200; // Fallback to 200px if no cards are available
+    }
+
+    // Scroll left by three cards
+    function leftScroll() {
+      scrollImages.scrollBy({
+        left: -3 * getCardWidth(), // Scroll by three cards width
+        behavior: "smooth"
+      });
+    }
+
+    // Scroll right by three cards
+    function rightScroll() {
+      scrollImages.scrollBy({
+        left: 3 * getCardWidth(), // Scroll by three cards width
+        behavior: "smooth"
+      });
+    }
+
+    // Attach scroll event and resize event listeners
+    scrollImages.addEventListener("scroll", checkScroll);
+    window.addEventListener("resize", checkScroll);
+    checkScroll();
+
+    // Attach click events to buttons
+    leftButton.addEventListener("click", leftScroll);
+    rightButton.addEventListener("click", rightScroll);
+  });
+</script>
 
   <!-- ************************** -->
 
