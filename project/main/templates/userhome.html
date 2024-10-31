@@ -365,7 +365,7 @@
     // Scroll left by three cards
     function leftScroll() {
       scrollImages.scrollBy({
-        left: -3 * getCardWidth(), // Scroll by three cards width
+        left: -1 * getCardWidth(), // Scroll by one cards width
         behavior: "smooth"
       });
     }
@@ -373,7 +373,7 @@
     // Scroll right by three cards
     function rightScroll() {
       scrollImages.scrollBy({
-        left: 3 * getCardWidth(), // Scroll by three cards width
+        left: 1 * getCardWidth(), // Scroll by one cards width
         behavior: "smooth"
       });
     }
@@ -449,7 +449,7 @@ $(document).click(function (event) {
 $(window).on('scroll', function () {
     var position = $(this).scrollTop(); 
     $('section').each(function () {
-        var target = $(this).offset().top - 100; 
+        var target = $(this).offset().top - 100;
         var id = $(this).attr('id');
         if (position >= target) {
             $('.navbar-nav .nav-link').removeClass('active');
