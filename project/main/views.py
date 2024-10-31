@@ -243,14 +243,18 @@ def course_detail(request, id):
 @login_required
 def course_search(request):
     query = request.GET.get('course_name')
-    course_title = Course.objects.get(title=query)
-    print(course_title)
-    manger = 0
+
+    try:
+        course_title = Course.objects.get(title=query)
+    except Course.DoesNotExist:
+        return render(request, 'notfound.html')
+
+    manager = 0
     admins = Admin.objects.filter(user=request.user)
     if admins.exists():
-        manger = 1
+        manager = 1
     
-    return render(request, 'coursebase.html', {'course': course_title, 'manager': manger})
+    return render(request, 'coursebase.html', {'course': course_title, 'manager': manager})
 
 def done(request, id):
     user_course = UserCourse.objects.get(user=request.user, course__id=id)
