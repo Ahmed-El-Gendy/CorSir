@@ -11,41 +11,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-  <!-- <nav class="navbar navbar-expand-lg navbar-dark  fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="#"><img src="images/12.png" class="rounded-circle" alt="" width="80px"
-                height="60px"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link b-lg-3" href="#about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link b-lg-3" href="#services">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link b-lg-3" href="#portfolio">Portfolio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link b-lg-3" href="#contact">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav> -->
-
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
-          <a class="navbar-brand" href="#home"><img src="{% static 'images/slide-1.jpg' %}" alt="" width="45px" height="40px" style="border-radius: 50%;" >
+          <a class="navbar-brand" href="{% url 'userhome' %}"><i class="bi bi-slack"></i>
             <span >COU</span>RSES
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -217,10 +185,8 @@
             {% load static %}
             <img src="{% static 'images/slide-1.jpg' %}" class="d-block w-100" alt="...">
             <div class="carousel-caption d-flex flex-column justify-content-center align-items-start text-start" style="top: 50%; transform: translateY(-50%);">
-              <h5>إدارة التطوير والتدريب</h5>
-              <span class="fs-5">إدارة التطوير والتدريب في الشركة  تهدف إلى تعزيز مهارات الموظفين وتحفيز الابتكار لضمان التميز في المنتجات. تتولى تحديد الاحتياجات التدريبية وتصميم برامج متخصصة لتطوير القدرات الفنية والإدارية. من مهامها تطوير المهارات القيادية، تشجيع الإبداع، وتقييم الأداء بشكل مستمر. تركز الإدارة أيضًا على تطبيق 
-                معايير الجودة والسلامة وتحفيز التعلم المستمر. أهميتها تكمن في زيادة الإنتاجية، 
-                تحسين جودة المنتجات، وتقليل التكاليف التشغيلية، مما يعزز قدرة الشركة التنافسية.</span>
+              <h5>Welcome To OTS Company</h5>
+              <span class="fs-5">We are dedicated to enhancing employee development through our comprehensive course display platform. Our goal is to empower your workforce with the skills they need to excel in their roles. Explore our diverse range of training programs designed to foster growth, collaboration, and continuous learning within your organization.</span>
                  <!--
                  <span><a href="#" class="btn btn-primary mt-3 btn-lg">more details</a></span>
                  -->
@@ -229,8 +195,8 @@
           <div class="carousel-item">
             <img src="{% static 'images/slide-2.jpg' %}" class="d-block w-100" alt="...">
             <div class="carousel-caption d-flex flex-column justify-content-center align-items-center text-center" style="top: 50%; transform: translateY(-50%);">
-              <h5>الرؤية</h5>
-              <p class="fs-5">أن تكون إدارة التطوير والتدريب في شركة الحلويات مرجعًا عالميًا للابتكار والتميز في تنمية الكفاءات البشرية، وتقديم حلول تدريبية متقدمة تسهم في تحقيق ريادة الشركة على المستوى العالمي في صناعة الحلويات.
+              <h5>Enhance Learning and Development</h5>
+              <p class="fs-5">Our platform simplifies employee training with easy access to organized courses. Companies can track progress, tailor training, and foster a culture of continuous learning, enhancing skills and driving success.
               </p>
                 <!--
                 <p><a href="#" class="btn btn-primary mt-3 btn-lg">more details</a></p>
@@ -248,74 +214,55 @@
         </button>
       </div><br><br><br><br>
       <!-- **************************************** -->
-      <section id="about">
-        <div class="container">
+      <section id="about" class="container">
         <div class="card mb-3 border-0" style="width: 100%; ">
             <div class="row g-0">
-                <div class="col-md-6 border-0 ">
-                     <img src="../static/images/shape1.png" class="img-fluid rounded-start" alt="..." width="100%">
-                 </div>
-                <div class="col-md-6 ">
-                    <div class="card-body "  style="margin: 15px; text-align: right;">
-                         <h5 class="card-title fw-bold fs-1" >:المهام الوظيفية لإدارة التطوير والتدريب</h5>
-                        <br>
-                            <span class="card-text fs-5">تحديد الاحتياجات التدريبية: تحليل الفجوات في مهارات الموظفين وتحديد الاحتياجات التدريبية لكل قسم في الشركة
-                            </span><br>
-                            <span class="card-text fs-5">تصميم وتنفيذ البرامج التدريبية: إعداد وتقديم برامج تدريبية متخصصة في مجالات مختلفة مثل التصنيع، التسويق، الجودة، وخدمة العملاء
-                            </span><br>
-                            <span class="card-text fs-5">تطوير المهارات القيادية: التركيز على تطوير مهارات القيادة والإدارة للفريق الإداري في الشركة لضمان كفاءة إدارة العمليات
-                            </span><br>
-                            <span class="card-text fs-5">تحفيز الابتكار والإبداع: تطوير ورش عمل ومبادرات تشجع الموظفين على التفكير الإبداعي والابتكار في تطوير منتجات جديدة تلبي احتياجات السوق
-                            </span><br>
-                            <span class="card-text fs-5">تقييم الأداء وتحديد خطط التطوير الشخصي: تقديم أدوات ومنهجيات لتقييم أداء الموظفين وتحديد نقاط القوة والضعف، ووضع خطط لتحسين وتطوير أداء الأفراد
-                            </span><br>
-                            <span class="card-text fs-5">الاطلاع على أحدث التقنيات والاتجاهات: متابعة التوجهات العالمية في صناعة الحلويات وتوفير التدريب المتعلق بتلك التقنيات، مما يعزز من تنافسية الشركة في السوق
-                            </span><br>
-                            <span class="card-text fs-5">توفير تدريب على الجودة والسلامة: ضمان أن جميع العاملين مدربين على معايير الجودة والسلامة الغذائية لتلبية متطلبات السوق والجهات التنظيمية
-                            </span><br>
-                            <span class="card-text fs-5">دعم التطوير المهني المستمر: تشجيع الموظفين على مواصلة التعليم والتعلم المستمر من خلال دورات وشهادات معترف بها دوليًا
-                            </span><br>
-                        <!--
-                             <p class="btu3"><button type="button">Know more future</button></p>
-                             -->
-                     </div>
+              <div class="col-md-6 ">
+                <div class="card-body"  style="margin: 15px; text-align: right;">
+                     <h5 class="card-title fw-bold fs-1 text-start" >About Us</h5>
+                    <div class="card-text text-start">
+                      <p>Welcome to OTS Company, an innovative platform dedicated to enhancing employee development through accessible online courses. We understand that continuous learning is vital for personal and professional growth, which is why we provide a centralized hub for companies to post and showcase their training programs. Our mission is to empower employees by offering a diverse range of courses that foster skill enhancement, collaboration, and career advancement. Join us in creating a culture of learning that drives success and excellence within your organization!</p>
+                    </div>
+                    
+                </div>
               </div>
-            </div>
+              <div class="col-md-6 border-0 ">
+                     <img src="../static/images/shape1.png" class="img-fluid rounded-start" alt="..." width="100%">
+              </div>
         </div>
-        </div>
-        </section>
+      </section>
         <!-- ****************************** -->
         <section id="services" class="services section-padding bg">
           <div class="container">
-              <p class="fs-1 fw-bold text-center">:قدرة وأهمية الإدارة</p>
+              <p class="fs-1 fw-bold text-center">Services</p>
       <div class="row row-cols-1 row-cols-md-3 g-4">
           <div class="col ">
             <div class="card h-100 border-0">
-              <div class="d-flex"> <img src="../static/images/task.png" >
-                  <h5 class="card-title fs-3 fw-bold">:تعزيز الإنتاجية</h5>
+              <div class="d-flex" > <img src="../static/images/books.png" class="img-fluid">
+                  <h5 class="card-title fs-3 fw-bold">Custom Course Creation</h5>
               </div>
               <div class="card-body">
-                  <p class="card-text fs-5">تحسين مهارات الموظفين يساهم في زيادة الإنتاجية وجودة المنتجات، مما يؤدي إلى تحسين الكفاءة التشغيلية.</p>
+                  <p class="card-text fs-5">Easily create and upload tailored courses to meet your organization's training needs, ensuring employees receive relevant and engaging content.</p>
               </div>
             </div>
           </div>
           <div class="col ">
               <div class="card h-100 border-0">
-                <div class="d-flex"><img src="../static/images/book.png" alt="" >
-                    <h5 class="card-title fs-3 fw-bold">:تحقيق رضا العملاء</h5>
+                <div class="d-flex"><img src="../static/images/240_F_791060134_DcYu9eD5ycLs2Xz1PNLtqOPeYImhkMp2.jpg" class="img-fluid" >
+                    <h5 class="card-title fs-3 fw-bold">Employee Progress Tracking</h5>
                     </div>
                   <div class="card-body">
-                    <p class="card-text fs-5">عندما يكون الموظفون أكثر كفاءة، تكون الشركة أكثر قدرة على تقديم منتجات مبتكرة وذات جودة عالية، مما يزيد من رضا العملاء وولائهم.</p>
+                    <p class="card-text fs-5">Monitor employee engagement and track progress with detailed reports and analytics to enhance training effectiveness and identify development opportunities.</p>
                 </div>
               </div>
             </div>
           <div class="col ">
             <div class="card h-100 border-0">
-              <div class="d-flex"><img src="../static/images/books.png" alt="">
-                 <h5 class="card-title fs-3 fw-bold">:زيادة القدرة التنافسية</h5>
+              <div class="d-flex"><img src="../static/images/240_F_474563693_PyUptqVKoRoJhzGakDjDOHRgiFhLiiSd.jpg" alt="">
+                 <h5 class="card-title fs-3 fw-bold">Seamless Integration and Support</h5>
               </div>
               <div class="card-body">
-                  <p class="card-text fs-5">التدريب المستمر للموظفين على أحدث التقنيات والتوجهات في صناعة الحلويات يجعل الشركة أكثر قدرة على المنافسة في الأسواق العالمية.</p>
+                  <p class="card-text fs-5">Enjoy smooth integration with your existing systems and access dedicated support to ensure a hassle-free experience for both administrators and employees.</p>
               </div>
             </div>
           </div>

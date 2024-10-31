@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
-          <a class="navbar-brand" href="#"><span ><i class="bi bi-slack"></i>COU</span>RSES
+          <a class="navbar-brand" href="#"><span ><i class="bi bi-slack"></i>COU</span>
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -20,7 +20,7 @@
           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'userhome' %}" style="padding-right: 56px">الصفحة الرئيسية</a>
+                <a class="nav-link" href="{% url 'userhome' %}" style="padding-right: 56px">Home</a>
               </li>
             <!--
               <li class="nav-item">
@@ -174,86 +174,29 @@
                 <h5 fs-1 fw-bold >Our Links</h5>
                 <p fs-3>Follow us from those links</p>
                 <div id="icon_text">
-                    <a href="https://www.facebook.com/b.labaneg" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
                         <i class="bi bi-facebook text-dark"></i>
                     </a>
-                    <a href="https://www.linkedin.com/company/b.laban/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
                         <i class="bi bi-linkedin text-dark"></i>
-                    </a>
-                    <a href="https://www.instagram.com/b.laban.eg" target="_blank" rel="noopener noreferrer">
-                        <i class="bi bi-instagram text-dark"></i>
                     </a>
                 </div>
             </div>
-
-            {% if user.is_authenticated %}
-                <div class="col-md-3 mb-4">
-                <h5>Useful Links</h5>
-                <ul class="list-unstyled">
-                    <li><a id="mmmm" href="https://drive.google.com/file/d/19gtGbQbDAcXul0tYPWk5EuKZf9J_WftB/view?usp=sharing" class="text-dark" target="_blank">سلامة الغذاء</a></li>
-                    <li><a id="mmmm" href="https://drive.google.com/file/d/1Ocv_NuwQCppUEcKNjBN5ySFj5FmfkL2X/view?usp=sharing" class="text-dark" target="_blank">خدمة العملاء</a></li>
-                    <li><a id="mmmm" href="https://drive.google.com/file/d/1BKFSXcVaFQbccqcmCO6pmYmOfEKAG6U7/view?usp=sharing" class="text-dark" target="_blank">سلامة الغذاء(2)</a></li>
-                    <li><a id="mmmm" href="https://drive.google.com/file/d/14MwaEnJ4HqnqDmysX_2Ch83xWdQ1mHqX/view?usp=sharing" class="text-dark" target="_blank">تحليل المخاطر</a></li>
-                    <!--
-                    <li><a href="#" class="text-dark">About us</a></li>
-                    <li><a href="#" class="text-dark">Sections</a></li>
-                    <li><a href="#" class="text-dark">Terms of service</a></li>
-                    -->
-                </ul>
-            </div>
-            <div class="col-md-3 mb-4">
-                <h5 style="padding-bottom: 5px">Documents</h5>
-                <ul class="list-unstyled">
-                    <!--
-                    <li><a href="#" class="text-dark">Mohamed</a></li>
-                    <li><a href="#" class="text-dark">Adel</a></li>
-                    <li><a href="#" class="text-dark">El-Sayed</a></li>
-                    <li><a href="#" class="text-dark">Hassan</a></li>
-                    <li><p>Website Development</p></li>
-                    <li><p>Mobile Apps Development</p></li>
-                    <li><p>Database Management</p></li>
-                    -->
-                    <li><a id="mmmm" href="https://docs.google.com/spreadsheets/d/1E6a4dDwGH6n4jWuDGyc7lRpZJDJuPJhl/edit?usp=sharing&ouid=114904246540518296467&rtpof=true&sd=true" class="text-dark" target="_blank">ملف تدريب الموظفين</a></li>
-
-                </ul>
-            </div>
-            {% else %}
                 <div class="col-md-3 mb-4">
                 <h5>Useful Links</h5>
                 <ul class="list-unstyled">
                     <li><a id="mmmm" href="{% url 'userhome' %}" class="text-dark">Home</a></li>
-                    <!--
-                    <li><a href="#" class="text-dark">About us</a></li>
-                    <li><a href="#" class="text-dark">Sections</a></li>
-                    <li><a href="#" class="text-dark">Terms of service</a></li>
-                    -->
                 </ul>
             </div>
             <div class="col-md-3 mb-4">
-                <h5 style="padding-bottom: 5px">Our Services</h5>
-                <ul class="list-unstyled">
-                    <!--
-                    <li><a href="#" class="text-dark">Mohamed</a></li>
-                    <li><a href="#" class="text-dark">Adel</a></li>
-                    <li><a href="#" class="text-dark">El-Sayed</a></li>
-                    <li><a href="#" class="text-dark">Hassan</a></li>
-                    -->
-                    <li><p>Website Development</p></li>
-                    <li><p>Mobile Apps Development</p></li>
-                    <li><p>Database Management</p></li>
-
-                </ul>
-            </div>
-            {% endif %}
-            <div class="col-md-3 mb-4">
-                <h5>Contact Us</h5>
-                <!--
-                <p>Mohamed Ail Street<br>Dekernes_Dakahlia</p>
-                <p><strong>Phone:</strong> 01096398096</p>
-                <p><strong>Email:</strong> info@example.com</p>
-                -->
-                <p><strong>Phone:</strong> 01275080330</p>
-            </div>
+              <h5>Contact Us</h5>
+              <i class="bi bi-envelope-fill"></i>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ramy41599@gmail.com" target="_blank" style="text-decoration: none; color: inherit;">
+                  <span>ramy41599@gmail.com</span>
+              </a>
+          </div>
+          
+          
         </div>
     </div>
   </footer>
