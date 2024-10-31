@@ -309,15 +309,12 @@
   </section>
 
   <style>
-    /* Hide scrollbar in WebKit browsers (Chrome/Safari) */
     .scroll-images::-webkit-scrollbar {
       display: none;
     }
-
-    /* Hide scrollbar for other browsers (Firefox, IE/Edge) */
     .scroll-images {
-      -ms-overflow-style: none; /* IE and Edge */
-      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
   </style>
 {% endif %}
@@ -377,18 +374,19 @@
     });
   </script>
   <!-- ************************************** -->
-  <div id="text2" class=" text-center my-5 container">
+  <div id="text2" class="text-center my-5 container">
     <div class="row justify-content-center">
-        <div class="col-md-6 col-sm-8 col-10 ">
+        <div class="col-md-6 col-sm-8 col-10">
             <h1>ONLINE <span>COURSES</span> SEARCH</h1><br>
             <h6>Get more online courses, 4 reasons why you’ll love education</h6><br>
-            <form class="d-flex">
-                <input type="text" class="form-control me-2" placeholder="Your Courses Name">
-                <button type="button">SEARCH COURSES</button>
+            <form class="d-flex" method="GET" action="{% url 'course_search' %}">
+                <input type="text" name="course_name" class="form-control me-2" placeholder="Your Course Name" required>
+                <button type="submit" class="btn btn-primary">SEARCH COURSES</button>
             </form><br><br>
         </div>
     </div>
-  </div>
+</div>
+
   <!-- ************************** -->
 
   <footer class="bg-light text-dark py-5">

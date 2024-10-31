@@ -62,21 +62,6 @@ def userhome(request):
     return render(request, 'userhome.html', data)
 
 
-def course_detail(request, id):
-    coursedata = get_object_or_404(Course, id=id)
-
-    manger = 0
-    admins = Admin.objects.filter(user=request.user)
-    if admins.exists():
-        manger = 1
-
-    context = {
-        'course': coursedata,
-        'manger': manger,
-    }
-    return render(request, 'coursebase.html', context)
-
-
 @login_required
 def adminhome(request):
     courses = Course.objects.all()
@@ -165,19 +150,6 @@ def c3(request):
 
 
 @login_required
-def done(request, id):
-    # Get the course with ID 1 for the logged-in user
-    user_course = UserCourse.objects.get(user=request.user, course__id=id)
-
-    # Mark the course as done
-    user_course.done = True
-    user_course.save()
-
-    # Optionally, send a success message
-    #messages.success(request, 'Course marked as done successfully!')
-    return redirect('/')
-
-@login_required
 def done1(request):
     # Get the course with ID 1 for the logged-in user
     user_course = UserCourse.objects.get(user=request.user, course__id=1)
@@ -253,3 +225,35 @@ def userdata(request, user_id):
     # Optionally, send a success message
     messages.success(request, 'Course marked as done successfully!')
     return render(request, 'userdata.html', data)
+
+def course_detail(request, id):
+    coursedata = get_object_or_404(Course, id=id)
+
+    manger = 0
+    admins = Admin.objects.filter(user=request.user)
+    if admins.exists():
+        manger = 1
+
+    context = {
+        'course': coursedata,
+        'manger': manger,
+    }
+    return render(request, 'coursebase.html', context)
+
+@login_required
+def course_search(request):
+    query = request.GET.get('course_name')
+    course_title = Course.objects.get(title=query)
+    print(course_title)
+    manger = 0
+    admins = Admin.objects.filter(user=request.user)
+    if admins.exists():
+        manger = 1
+    
+    return render(request, 'coursebase.html', {'course': course_title, 'manager': manger})
+
+def done(request, id):
+    user_course = UserCourse.objects.get(user=request.user, course__id=id)
+    user_course.done = True
+    user_course.save()
+    return redirect('/')
