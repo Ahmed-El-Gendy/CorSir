@@ -58,7 +58,7 @@ def userhome(request):
 
     data = {
         'manger': manger,
-        'usercourses': usercourse_data,  # Updated data
+        'usercourses': usercourse_data,
     }
     return render(request, 'userhome.html', data)
 
@@ -81,9 +81,6 @@ def login(request):
 
         if user is not None:
             auth_login(request, user)
-            # admins = Admin.objects.all()
-            # if user in admins:
-            #    return redirect('adminhome')
             return redirect('userhome')
         else:
             messages.error(request, 'Invalid username or password.')
@@ -104,108 +101,15 @@ def course(request):
     data = {'courses': courses, 'users': users, 'usercourses': usercourses}
     return render(request, 'adminhome.html', data)
 
-
-@login_required
-def c1(request):
-    courses = Course.objects.all()
-    users = User.objects.all()
-    usercourses = UserCourse.objects.all()
-
-    manger = 0
-    admins = Admin.objects.filter(user=request.user)
-    if admins.exists():
-        manger = 1
-
-    data = {'courses': courses, 'users': users, 'usercourses': usercourses, 'manger': manger}
-    return render(request, 'course.html', data)
-
-
-@login_required
-def c2(request):
-    courses = Course.objects.all()
-    users = User.objects.all()
-    usercourses = UserCourse.objects.all()
-
-    manger = 0
-    admins = Admin.objects.filter(user=request.user)
-    if admins.exists():
-        manger = 1
-
-    data = {'courses': courses, 'users': users, 'usercourses': usercourses, 'manger': manger}
-    return render(request, 'course2.html', data)
-
-
-@login_required
-def c3(request):
-    courses = Course.objects.all()
-    users = User.objects.all()
-    usercourses = UserCourse.objects.all()
-
-    manger = 0
-    admins = Admin.objects.filter(user=request.user)
-    if admins.exists():
-        manger = 1
-
-    data = {'courses': courses, 'users': users, 'usercourses': usercourses, 'manger': manger}
-    return render(request, 'course3.html', data)
-
-
-@login_required
-def done1(request):
-    # Get the course with ID 1 for the logged-in user
-    user_course = UserCourse.objects.get(user=request.user, course__id=1)
-
-    # Mark the course as done
-    user_course.done = True
-    user_course.save()
-
-    # Optionally, send a success message
-    messages.success(request, 'Course marked as done successfully!')
-    return redirect('/')
-
-
-@login_required
-def done2(request):
-    # Get the course with ID 1 for the logged-in user
-    user_course = UserCourse.objects.get(user=request.user, course__id=2)
-
-    # Mark the course as done
-    user_course.done = True
-    user_course.save()
-
-    # Optionally, send a success message
-    messages.success(request, 'Course marked as done successfully!')
-    return redirect('/')
-
-
-@login_required
-def done3(request):
-    # Get the course with ID 1 for the logged-in user
-    user_course = UserCourse.objects.get(user=request.user, course__id=3)
-
-    # Mark the course as done
-    user_course.done = True
-    user_course.save()
-
-    # Optionally, send a success message
-    messages.success(request, 'Course marked as done successfully!')
-    return redirect('/')
-
-
 @login_required
 def userdata(request, user_id):
-    # Get the course with ID 1 for the logged-in user
-
     check = 0
     admins = Admin.objects.filter(user=request.user)
     if admins.exists():
         check = 1
-
     if check == 0:
         redirect('/')
-
     courses = Course.objects.all()
-
     user_course = UserCourse.objects.filter(user=user_id)
     user_course = list(enumerate(user_course))
     users = []
@@ -226,8 +130,6 @@ def userdata(request, user_id):
     user_core = UserCourse.objects.filter(user=user_id).select_related('course')
     user_course_ids = user_core.values_list('course_id', flat=True)
     data = {'user_course': users, 'employee': employee, 'manger': manger, 'courses': courses, 'user_course_ids': user_course_ids}
-    # Optionally, send a success message
-    #messages.success(request, 'Course marked as done successfully!')
     return render(request, 'userdata.html', data)
 
 
