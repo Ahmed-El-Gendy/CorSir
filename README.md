@@ -42,7 +42,7 @@ To set up the project locally, follow these steps:
 
 2. Navigate to the project directory:
    ```bash
-   cd course-management-platform
+   cd CorSir/project
    ```
 
 3. Install the Python dependencies:
