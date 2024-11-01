@@ -37,7 +37,7 @@ To set up the project locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/course-management-platform.git
+   git clone https://github.com/Ahmed-El-Gendy/CorSir.git
    ```
 
 2. Navigate to the project directory:
