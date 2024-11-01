@@ -1,5 +1,5 @@
-
 # Company Course Management Platform
+![Alt text for the image](Capture.JPG)
 
 This project is a **Company Course Management System** designed to display and manage courses assigned to employees. The system allows employees to view their assigned courses and track their progress, while administrators manage the creation and assignment of courses.
 
