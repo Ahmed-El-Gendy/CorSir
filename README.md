@@ -45,27 +45,44 @@ To set up the project locally, follow these steps:
    cd CorSir/project
    ```
 
-3. Install the Python dependencies:
+3. Create a virtual environment:
    ```bash
-   pip install -r requirements.txt
+   python -m venv venv
    ```
 
-4. Apply the database migrations:
+4. Activate the virtual environment:
+
+   - On **Windows**:
+     ```bash
+     venv\Scripts\activate
+     ```
+   - On **macOS/Linux**:
+     ```bash
+     source venv/bin/activate
+     ```
+
+5. Install the Python dependencies, including Pillow:
+   ```bash
+   pip install -r requirements.txt
+   pip install Pillow
+   ```
+
+6. Apply the database migrations:
    ```bash
    python manage.py migrate
    ```
 
-5. Create an admin user to manage the platform:
+7. Create an admin user to manage the platform:
    ```bash
    python manage.py createsuperuser
    ```
 
-6. Start the Django development server:
+8. Start the Django development server:
    ```bash
    python manage.py runserver
    ```
 
-7. Visit `http://localhost:8000` to view the application.
+9. Visit `http://localhost:8000` to view the application.
 
 ## Usage
 
@@ -100,6 +117,6 @@ Planned future improvements include:
 
 This project was developed by:
 
-- **Ramy Rashad**
-- **Ahmed Elgendy**
-- **Saged Ryan**
+- **Ramy Rashad** - Backend Developer
+- **Ahmed El Gendy** - Backend Developer
+- **Saged Ryan** - Frontend Developer
