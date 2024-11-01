@@ -28,8 +28,8 @@ SECRET_KEY = 'django-insecure-19v_2l%)k%_8xe(vge_^&!+bq$)knuj98+=$s@thi18!@=gk25
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '48d7-45-243-168-201.ngrok-free.app']
-CSRF_TRUSTED_ORIGINS = ['https://48d7-45-243-168-201.ngrok-free.app']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'be95-45-243-163-166.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://be95-45-243-163-166.ngrok-free.app']
 
 
 
