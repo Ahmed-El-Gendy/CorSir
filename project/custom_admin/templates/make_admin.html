@@ -1,0 +1,18 @@
+{% extends "adminsite.html" %}
+
+{% block content %}
+<h2>Make {{ user.username }} an Admin</h2>
+
+{% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+{% else %}
+    <p>Are you sure you want to make this user an admin?</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Yes, Make Admin</button>
+        <a href="{% url 'manage_users' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+{% endif %}
+
+{% endblock %}

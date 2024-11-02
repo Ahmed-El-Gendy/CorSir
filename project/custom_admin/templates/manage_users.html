@@ -1,0 +1,35 @@
+{% extends "adminsite.html" %}
+
+{% block content %}
+<h2>Manage Users</h2>
+<a href="{% url 'add_user' %}" class="btn btn-primary mb-3">Add New User</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+                <a href="{% url 'edit_user' user.id %}" class="btn btn-sm btn-warning">Edit</a>
+                <a href="{% url 'delete_user' user.id %}" class="btn btn-sm btn-danger">Delete</a>
+                {% if not user.custom_admin_user %}
+                <a href="{% url 'make_user_admin' user.id %}" class="btn btn-sm btn-primary">Make Admin</a>
+                {% else %}
+                <span class="badge bg-success">Admin</span>
+                {% endif %}
+            </td>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
