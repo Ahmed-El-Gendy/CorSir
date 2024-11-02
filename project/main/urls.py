@@ -19,4 +19,5 @@ urlpatterns = [
     path('logout/', custom_logout, name='logout'),
     path('search/', course_search, name='course_search'),
     path('add-course/', add_course, name='add_course'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
