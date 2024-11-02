@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login as auth_login
 from django.contrib import messages
 from .models import Admin, UserCourse, Course
 from django.contrib.auth.decorators import login_required
-from .forms import CustomLoginForm
+from .forms import CustomLoginForm, CourseForm
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 
@@ -196,3 +196,18 @@ def save_user_courses(request, id):
 
         return redirect('index')
     return HttpResponseBadRequest("Invalid request")
+
+@login_required
+def add_course(request):
+    if request.method == 'POST':
+        form = CourseForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = CourseForm()
+    manger = 0
+    admins = Admin.objects.filter(user=request.user)
+    if admins.exists():
+        manger = 1
+    return render(request, 'addcourse.html', {'form': form, 'manger': manger})

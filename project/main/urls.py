@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import adminhome, userhome, login, index, custom_logout, userdata, course_detail, done, course_search, course_table, save_user_courses
+from .views import adminhome, userhome, login, index, custom_logout, userdata, course_detail, done, course_search, course_table, save_user_courses, add_course
 from django.contrib.auth.views import LogoutView
 from django.contrib.auth import views as auth_views
 
@@ -18,4 +18,5 @@ urlpatterns = [
     path('login/', login, name='login'),
     path('logout/', custom_logout, name='logout'),
     path('search/', course_search, name='course_search'),
+    path('add-course/', add_course, name='add_course'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
