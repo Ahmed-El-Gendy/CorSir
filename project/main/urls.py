@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import adminhome, userhome, login, index, custom_logout, userdata, course_detail, done, course_search, course_table, save_user_courses, add_course
+from .views import adminhome, userhome, login, index, custom_logout, userdata, course_detail, done, course_search, course_table, save_user_courses, add_course, course_search, course_table, save_user_courses, list_courses
 from django.contrib.auth.views import LogoutView
 from django.contrib.auth import views as auth_views
 

@@ -211,3 +211,14 @@ def add_course(request):
     if admins.exists():
         manger = 1
     return render(request, 'addcourse.html', {'form': form, 'manger': manger})
+
+@login_required
+def list_courses(request):
+    courses = Course.objects.all()
+    return render(request, 'your_template.html', {'courses': courses})
+
+@login_required
+def delete_course(request, course_id):
+    course = get_object_or_404(Course, id=course_id)
+    course.delete()
+    return redirect('userhome')
