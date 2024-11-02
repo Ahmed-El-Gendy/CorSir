@@ -11,5 +11,3 @@ class UserCourseForm(forms.ModelForm):
     class Meta:
         model = UserCourse
         fields = '__all__'
-
-

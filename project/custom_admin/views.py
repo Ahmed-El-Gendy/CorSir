@@ -8,6 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.forms import UserChangeForm
+from .forms import UserCourseForm 
 
 
 @login_required
@@ -104,3 +105,39 @@ def make_user_admin(request, user_id):
                 'error': 'This user is already an admin.'
             })
     return render(request, 'make_admin.html', {'user': user})
+
+@login_required
+def manage_user_courses(request):
+    user_courses = UserCourse.objects.all()
+    return render(request, 'manage_usercourses.html', {'user_courses': user_courses})
+
+@login_required
+def add_user_course(request):
+    if request.method == 'POST':
+        form = UserCourseForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('manage_usercourses')
+    else:
+        form = UserCourseForm()
+    return render(request, 'add_user_course.html', {'form': form})
+
+@login_required
+def edit_user_course(request, user_course_id):
+    user_course = get_object_or_404(UserCourse, id=user_course_id)
+    if request.method == 'POST':
+        form = UserCourseForm(request.POST, instance=user_course)
+        if form.is_valid():
+            form.save()
+            return redirect('manage_usercourses')
+    else:
+        form = UserCourseForm(instance=user_course)
+    return render(request, 'edit_user_course.html', {'form': form})
+
+@login_required
+def delete_user_course(request, user_course_id):
+    user_course = get_object_or_404(UserCourse, id=user_course_id)
+    if request.method == 'POST':
+        user_course.delete()
+        return redirect('manage_usercourses')
+    return render(request, 'delete_user_course.html', {'user_course': user_course})

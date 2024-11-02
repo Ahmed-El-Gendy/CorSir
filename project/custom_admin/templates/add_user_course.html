@@ -1,0 +1,11 @@
+{% extends "adminsite.html" %}
+
+{% block content %}
+<h2>Add User Course</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Add Course</button>
+    <a href="{% url 'manage_usercourses' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

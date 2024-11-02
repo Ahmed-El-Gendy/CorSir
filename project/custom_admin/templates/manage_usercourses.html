@@ -1,0 +1,33 @@
+{% extends "adminsite.html" %}
+
+{% block content %}
+<h2>Manage User Courses</h2>
+<a href="{% url 'add_user_course' %}" class="btn btn-primary mb-3">Add User Course</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>User</th>
+            <th>Course</th>
+            <th>Enrolled On</th>
+            <th>Completed</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user_course in user_courses %}
+        <tr>
+            <td>{{ user_course.id }}</td>
+            <td>{{ user_course.user.username }}</td>
+            <td>{{ user_course.course.title }}</td>
+            <td>{{ user_course.created_at }}</td>
+            <td>{{ user_course.done|yesno:"Yes,No" }}</td>
+            <td>
+                <a href="{% url 'edit_user_course' user_course.id %}" class="btn btn-sm btn-warning">Edit</a>
+                <a href="{% url 'delete_user_course' user_course.id %}" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

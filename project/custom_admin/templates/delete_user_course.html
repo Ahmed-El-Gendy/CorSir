@@ -1,0 +1,11 @@
+{% extends "adminsite.html" %}
+
+{% block content %}
+<h2>Delete User Course</h2>
+<p>Are you sure you want to delete the user course for {{ user_course.user.username }} in {{ user_course.course.title }}?</p>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="{% url 'manage_usercourses' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
