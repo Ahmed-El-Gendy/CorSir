@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.forms import UserChangeForm
 from .forms import UserCourseForm 
+from .models import Admin as AdminModel
 
 
 @login_required
@@ -24,7 +25,10 @@ def add_course(request):
 
 @login_required
 def adminsite(request):
-    return render(request, 'adminsite.html')
+    if AdminModel.objects.filter(user=request.user).exists():
+        return render(request, 'adminsite.html')
+    else:
+        return HttpResponse('You are not an admin.')
 
 @login_required
 def manage_courses(request):
